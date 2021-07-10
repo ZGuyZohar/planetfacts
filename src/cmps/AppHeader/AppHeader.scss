@@ -1,0 +1,48 @@
+@import '/src/assets/styles/setup/variables';
+
+header {
+    grid-area: header;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid $grayblue;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 1440px;
+    }
+
+    h2 {
+        text-transform: uppercase;
+        font-weight: 500;
+        position: relative;
+        bottom: 4px;
+        margin-left: 0.95rem;
+    }
+
+    ul {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Spartan-Regular';
+
+        a {
+            color: $nav;
+            padding: 0 0.95rem;
+
+        }
+
+        
+
+
+        .active {
+            color: $white;
+
+        }
+    }
+}

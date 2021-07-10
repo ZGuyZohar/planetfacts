@@ -1,0 +1,221 @@
+@import '/src/assets/styles/setup/variables';
+
+.inner-container {
+    width: 100%;
+    max-width: 1110px;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 150px 350px;
+    grid-template-rows: 150px auto 128px;
+    margin: 0 auto;
+
+    .img-container {
+        grid-column: 1/3;
+        grid-row: 1/3;
+        place-self: center;
+        position: relative;
+        transform: translatey(0px);
+        animation: float 6s ease-in-out infinite;
+        border-radius: 50%;
+
+        .marker {
+            width: 163px;
+            position: absolute;
+            left: 50%;
+            top: 60%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .planet-info {
+        grid-column: 4/5;
+        grid-row: 2/3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 520px;
+        margin-bottom: 85px;
+
+        .info-header {
+            margin-bottom: 2.2em;
+
+
+            h2 {
+                margin: 0 0 55px 0;
+                letter-spacing: 1px;
+                font-size: 5rem;
+            }
+
+            p {
+                width: 30ch;
+                font-size: .875rem;
+                margin-bottom: 2em;
+            }
+
+            small {
+                font-size: .875rem;
+                color: $gray;
+                position: relative;
+
+                a {
+                    color: $gray;
+                    text-decoration: underline;
+                    font-family: 'Spartan-Bold';
+                }
+
+                &::after {
+                    content: url('../../assets/imgs/icon-source.svg');
+                    position: absolute;
+                    right: -1.325rem;
+                    top: -3px;
+                }
+
+            }
+        }
+
+        .info-nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 176px;
+
+            .info {
+                height: 50px;
+                border: 1px solid $grayblue;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                text-transform: uppercase;
+                font-family: 'Spartan-Bold';
+                font-size: .75rem;
+                letter-spacing: 2.57px;
+                transition: background-color 0.3s;
+
+                &:hover {
+                    background-color: #313148;
+                }
+
+                span {
+                    color: $gray;
+                    padding: 0 24px;
+                }
+            }
+        }
+
+    }
+
+    .planet-extras {
+        grid-column: 1/5;
+        grid-row: 3/4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .extra-container {
+            border: 1px solid $grayblue;
+            width: 255px;
+            height: 128px;
+
+            .extra {
+                padding: 1.25rem 0 0 1.4375rem;
+
+                span {
+                    font-family: 'Spartan-Bold';
+                    font-size: .6875rem;
+                    letter-spacing: 1px;
+                    color: $gray;
+                    text-transform: uppercase;
+                }
+
+                h3 {
+                    font-family: 'Antonio-Regular';
+                    font-size: 2.5rem;
+                    margin: 0;
+                    font-weight: 500;
+                    letter-spacing: -1.5px;
+                    line-height: 3.75rem;
+                }
+
+            }
+        }
+    }
+
+    .mercury {
+        background-color: $mercury;
+
+        &:hover {
+            background-color: hsl(194, 48%, 60%) !important;
+        }
+    }
+
+    .venus {
+        background-color: $venus;
+
+        &:hover {
+            background-color: hsl(33, 82%, 70%) !important;
+        }
+    }
+
+    .earth {
+        background-color: $earth;
+
+        &:hover {
+            background-color: hsl(263, 67%, 60%) !important;
+        }
+    }
+
+    .mars {
+        background-color: $mars;
+
+        &:hover {
+            background-color: hsl(10, 63%, 60%) !important;
+        }
+    }
+
+    .jupiter {
+        background-color: $jupiter;
+
+        &:hover {
+            background-color: hsl(2, 68%, 62%) !important;
+        }
+    }
+
+    .saturn {
+        background-color: $saturn;
+
+        &:hover {
+            background-color: hsl(17, 73%, 55%) !important;
+        }
+    }
+
+    .uranus {
+        background-color: $uranus;
+
+        &:hover {
+            background-color: hsl(169, 73%, 55%) !important;
+        }
+    }
+
+    .neptune {
+        background-color: $neptune;
+
+        &:hover {
+            background-color: hsl(222, 87%, 65%) !important;
+        }
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+
+    50% {
+        transform: translatey(-30px);
+    }
+
+    100% {
+        transform: translatey(0px);
+    }
+}
