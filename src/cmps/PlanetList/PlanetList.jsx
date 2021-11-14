@@ -46,6 +46,7 @@ export function PlanetList({ planets, isOrigin }) {
     // TODO: make more efficient rendering via useCallback's and useMemo's
     // TODO: make responsive and create homepage
     // TODO: finally then you can make typeracer!!!!
+    // TODO: error handling and user msgs!
 
     return ( planets && 
         <div className="carousel-list">
