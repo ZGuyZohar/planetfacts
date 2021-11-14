@@ -15,12 +15,30 @@ header {
         max-width: 1440px;
     }
 
-    h2 {
-        text-transform: uppercase;
-        font-weight: 500;
-        position: relative;
-        bottom: 4px;
-        margin-left: 0.95rem;
+    .logos {
+        display: flex;
+        align-items: center;
+        
+        h2 {
+            font-weight: 500;
+            position: relative;
+            bottom: 4px;
+            margin-left: 0.95rem;   
+        }
+        
+        a {
+            text-transform: uppercase;
+            margin-left: 2rem;
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+            color: $nav;
+            font-family: 'Antonio-Regular';
+            font-weight: 400;
+
+            &:hover {
+                color: $white;
+            }
+        }
     }
 
     ul {
@@ -35,6 +53,9 @@ header {
             color: $nav;
             padding: 0 0.95rem;
 
+            &:hover {
+                color: $white;
+            }
         }
 
         

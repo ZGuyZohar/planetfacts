@@ -1,0 +1,12 @@
+.gallery-preview {
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.2);
+    }
+
+    img {
+        max-width: 100%;
+    }
+}

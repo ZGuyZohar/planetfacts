@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { planetService } from '../../services/planet-service';
 import './PlanetDetails.scss'
 
+// FIX DETAILS FOR CREATED PLANETS
 
 export function PlanetDetails(props) {
 
@@ -16,20 +17,18 @@ export function PlanetDetails(props) {
     const extraTags = ['rotation time', 'revolution time', 'radius', 'average temp.']
 
     useEffect(() => {
+        setPlanetIdx(0)
         planetService.getById(id)
             .then(planet => {
-                console.log(planet, 'from useffect');
-                initPlanet(planet)
+                initPlanet(planet) 
             })
     }, [id])
-
     
-    const setImgs = (planet) => {
-        planetImgs = (Object.values(planet.images))
+    const getImgs = (planet) => {
+        return Object.values(planet.images)
     }
     
-    const initPlanetInfo = (planet) => {
-        console.log(planet, 'init');
+    const getPlanetInfo = (planet) => {
         const { overview, structure, geology, images } = planet;
         const info = {
             overview,
@@ -46,25 +45,26 @@ export function PlanetDetails(props) {
                 img: (images[subject]) ? images[subject] : (subject === 'structure') ? images.internal : images.planet
             })
         })
-        console.log(tempPlanetInfo);
-        setPlanetInfo(tempPlanetInfo)
+        return tempPlanetInfo
     }
     
-    const initPlanetStats = (planet) => {
+    const getPlanetStats = (planet) => {
         const { radius, revolution, rotation, temperature } = planet;
-        setPlanetStats({
+        return {
             rotation,
             revolution,
             radius,
             temperature
-        })
+        }
     }
 
     const initPlanet = (planet) => {
+        const planetInfo = getPlanetInfo(planet);
+        const planetStats = getPlanetStats(planet);
         setPlanet(planet);
-        initPlanetInfo(planet)
-        setImgs(planet) 
-        initPlanetStats(planet)
+        setPlanetInfo(planetInfo)
+        planetImgs = getImgs(planet) 
+        setPlanetStats(planetStats)
     }
 
     const planetClass = (idx) => {
@@ -72,7 +72,7 @@ export function PlanetDetails(props) {
     }
 
     return  ( planet && planetInfo && planetStats &&
-        <section className="inner-container">       
+        <section className="details-container inner-container">       
             <div className="img-container">
                 {(planetIdx === 0 || planetIdx === 2) &&
                 <img src={require(`../../assets/imgs${planetInfo[0].img}`).default} alt="" />}
@@ -85,7 +85,7 @@ export function PlanetDetails(props) {
                 <div className="info-header">
                     <h2>{planet.name}</h2>
                     <p>{planetInfo[planetIdx].content}</p>
-                    <small>Source: <a href={planet.geology.source}>Wikipedia</a></small>
+                    <small>Source: <a href={planet.overview.source}>Wikipedia</a></small>
 
                 </div>
                 <nav className="info-nav">
@@ -102,7 +102,7 @@ export function PlanetDetails(props) {
             </article>
             <div className="planet-extras">
                {Object.keys(planetStats).map((stat, idx) => (
-                   <article className="extra-container">
+                   <article key={idx} className="extra-container">
                        <div className="extra">
                             <span>{extraTags[idx]}</span>
                             <h3>{planetStats[stat]}</h3>

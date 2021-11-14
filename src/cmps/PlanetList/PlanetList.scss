@@ -1,0 +1,18 @@
+@import '/src/assets/styles/setup/variables';
+@import '/src/assets/styles/setup/mixins';
+
+.carousel-list {
+    @include animation-float;
+    @include animation-scale;
+    width: 100%;
+    max-width: 1310px;
+    cursor: pointer;
+
+    .swiper-container {
+        padding-top: 2em;
+    }
+
+
+
+}
+
